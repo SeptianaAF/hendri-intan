@@ -12,32 +12,18 @@
 <style>
   body {
     margin: 0;
-    background: #ffffff;
-    overflow-x: hidden;
-    font-family: 'Inria Sans', sans-serif;
+    background: white;
+    display: flex;
+    justify-content: center;
   }
 
-  /* MOBILE DEFAULT = FULL WIDTH */
   .phone-container {
     width: 100%;
-    min-height: 100vh;
+    max-width: 430px; /* hanya batasi saat desktop */
+    height: 100vh;
     position: relative;
+    overflow: hidden;
     background: black;
-    overflow-x: hidden;
-  }
-
-  /* DESKTOP MODE (SIMULASI HP) */
-  @media (min-width: 768px) {
-    body {
-      display: flex;
-      justify-content: center;
-    }
-
-    .phone-container {
-      max-width: 430px;
-      height: 100vh;
-      overflow-y: auto;
-    }
   }
 
   .font-inria {
@@ -328,7 +314,7 @@
 }
 
 .thankyou-content h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Italiana', serif;
   font-size: 40px;
   color: #ffffff;
   margin-bottom: 20px;
@@ -340,7 +326,7 @@
 }
 
 .couple-name {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Italiana', serif;
   font-size: 32px;
   color: #ffffff;
   margin-bottom: 50px;
@@ -436,11 +422,11 @@
 </button>
   <!-- COVER -->
 <section id="cover"
-    class="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
+    class="absolute inset-0 z-10 flex items-center justify-center text-center text-white">
     <img src="IMG_4099.JPEG"
-         class="relative min-h-screen bg-[#e9e9e9] overflow-y-auto w-full h-full object-cover">
+         class="absolute inset-0 w-full h-full object-cover">
 
-    <div class="relative min-h-screen bg-[#e9e9e9] overflow-y-auto bg-black/40"></div>
+    <div class="absolute inset-0 bg-black/40"></div>
 
     <div class="relative z-10 px-8">
 
@@ -555,7 +541,7 @@ class="px-6 py-2 rounded-full font-inria text-white text-sm
   </div>
 <!-- SECTION COUNTDOWN -->
 <section id="countdown"
-class="relative w-full overflow-hidden">
+class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
 
     <img src="iPhone 17 - 4.png"
          class="absolute inset-0 w-full h-full object-contain">
@@ -668,7 +654,7 @@ class="w-full py-20
 </section>
 <!-- SECTION COUNTDOWN -->
 <section id="surat"
-class="relative w-full overflow-hidden">
+class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
 
     <img src="iPhone 17 - 4.png"
          class="absolute inset-0 w-full h-full object-contain">
