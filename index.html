@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wedding of Hendri & Intan</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;600&family=Italiana&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+  }
+
+  .phone-container {
+    width: 100%;
+    max-width: 430px; /* hanya batasi saat desktop */
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: black;
+  }
+
+  .font-inria {
+    font-family: 'Inria Sans', sans-serif;
+  }
+
+  .font-italiana {
+    font-family: 'Italiana', serif;
+  }
+/* ===== CARD ANIMATION (Flip 360) ===== */
+#flipCard {
+  opacity: 0;
+  transform: rotateY(-90deg) scale(0.8);
+  transform-style: preserve-3d;
+  transition: all 1.2s cubic-bezier(.17,.67,.38,1.35);
+}
+
+#flipCard.show {
+  opacity: 1;
+  transform: rotateY(0deg) scale(1);
+}
+
+
+/* ===== TEKS ANIMASI ===== */
+
+/* dari atas */
+.from-top {
+  opacity: 0;
+  transform: translateY(-80px);
+  transition: all 1s ease;
+}
+
+.from-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* dari bawah */
+.from-bottom {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1s ease;
+}
+
+.from-bottom.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* button scale pop */
+.pop-in {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.8s ease;
+}
+
+.pop-in.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.galeri-section {
+  background: #808080;
+  padding: 80px 20px;
+}
+
+.galeri-title {
+  text-align: center;
+  font-size: 42px;
+  font-family: 'italiana', serif;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.galeri-container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Base item */
+.galeri-item {
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+.galeri-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+/* Hover zoom elegan */
+.galeri-item:hover img {
+  transform: scale(1.08);
+}
+
+/* Variasi ukuran */
+.large img {
+  height: 420px;
+}
+
+.wide img {
+  height: 350px;
+}
+
+.portrait img {
+  height: 520px;
+}
+
+/* Grid 2 kolom */
+.galeri-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.galeri-grid-2 .galeri-item img {
+  height: 300px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .galeri-title {
+    font-size: 32px;
+  }
+
+  .large img {
+    height: 300px;
+  }
+
+  .wide img {
+    height: 250px;
+  }
+
+  .portrait img {
+    height: 380px;
+  }
+
+  .galeri-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .galeri-grid-2 .galeri-item img {
+    height: 260px;
+  }
+}
+
+.gift-section {
+  background: #808080;
+  padding: 90px 20px;
+}
+
+.gift-box {
+  max-width: 600px;
+  margin: auto;
+  background: #ffffff;
+  padding: 50px 30px;
+  border-radius: 35px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.gift-box h2 {
+  font-size: 38px;
+  font-family: 'Playfair Display', serif;
+  color: 4a4a4a;
+  margin-bottom: 15px;
+}
+
+.gift-box p {
+  color: #4a4a4a;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* SLIDE PREMIUM */
+.gift-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s cubic-bezier(.77,0,.18,1);
+}
+
+.gift-content.show {
+  max-height: 1000px;
+  margin-top: 40px;
+}
+
+/* REKENING CARD */
+.rekening-card {
+  position: relative;
+  background: linear-gradient(135deg, #f5f5f5, #e9e9e9);
+  padding: 30px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  text-align: left;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* SHIMMER EFFECT */
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.1),
+    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.1)
+  );
+  transform: skewX(-25deg);
+  animation: shimmerMove 3s infinite;
+}
+
+@keyframes shimmerMove {
+  100% {
+    left: 150%;
+  }
+}
+
+/* LOGO */
+.bank-header {
+  margin-bottom: 20px;
+}
+
+.bank-logo {
+  height: 35px;
+}
+
+/* INFO */
+.rekening-info h3 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+.rekening-info p {
+  margin-top: 5px;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  background: #cfcfcf;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.copy-btn:hover {
+  background: #b5b5b5;
+}
+
+/* ALAMAT */
+.alamat-card {
+  background: #f5f5f5;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.alamat-card h4 {
+  margin-bottom: 15px;
+}
+.thankyou-section {
+  background: linear-gradient(to bottom, #808080 0%, #ffffff 100%);
+  text-align: left;
+  padding-top: 80px;
+  color: #ffffff;
+}
+
+.thankyou-content {
+  max-width: 600px;
+  margin: auto;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.thankyou-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.thankyou-content p {
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.couple-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+
+/* FOTO */
+.thankyou-image img {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+  margin-top: 40px;
+}
+
+/* FOOTER */
+.thankyou-footer {
+  background: #5a0000;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.thankyou-footer span {
+  font-weight: bold;
+}
+
+.social-icons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  background: #800000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #a00000;
+  transform: scale(1.1);
+}
+
+.social-icons svg {
+  width: 20px;
+  height: 20px;
+}
+.music-btn {
+  position: fixed;
+  bottom: 24px;
+  z-index: 999;
+}
+
+/* Desktop (layar lebih besar dari 430px) */
+@media (min-width: 431px) {
+  .music-btn {
+    right: calc((100vw - 430px)/2 + 24px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 430px) {
+  .music-btn {
+    right: 24px;
+  }
+}
+</style>
+</head>
+<body class="m-0 p-0 overflow-x-hidden">
+    <div class="phone-container relative overflow-hidden">
+  <div id="wrapper"
+       class="w-full h-full transition-transform duration-1000 ease-in-out">
+<audio id="bgMusic" loop>
+  <source src="gunslinger.mp3" type="audio/mpeg">
+</audio>
+<button id="musicToggle"
+  onclick="toggleMusic()"
+  class="hidden music-btn
+         w-12 h-12 rounded-full
+         bg-gradient-to-b from-red-600 to-[#800000]
+         text-white
+         flex items-center justify-center
+         shadow-[0_4px_10px_rgba(128,0,0,0.5)]
+         active:scale-95 transition">
+  🔊
+</button>
+  <!-- COVER -->
+<section id="cover"
+    class="absolute inset-0 z-10 flex items-center justify-center text-center text-white">
+    <img src="IMG_4099.JPEG"
+         class="absolute inset-0 w-full h-full object-cover">
+
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <div class="relative z-10 px-8">
+
+      <p class="font-inria tracking-widest text-base mb-5">
+        THE WEDDING OF
+      </p>
+<br>
+      <h1 class="font-italiana text-5xl mb-8">
+        Hendri & Intan
+      </h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+      <p class="font-inria text-lg">Dear,</p>
+      <br>
+      <p id="guestName" class="font-inria text-2xl font-semibold mb-10">
+        Tamu Undangan
+      </p>
+
+<button onclick="openInvitation()"
+class="px-6 py-2 rounded-full font-inria text-white text-sm
+       bg-gradient-to-b from-red-600 to-[#800000]
+       shadow-[0_4px_10px_rgba(128,0,0,0.5)]
+       active:scale-95 transition">
+  Buka Undangan
+</button>
+
+
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+<section id="content"
+
+    class="absolute inset-0 z-20 bg-[#e9e9e9] text-black
+           translate-y-full
+           transition-transform duration-1000 ease-[cubic-bezier(.77,0,.18,1)]
+           overflow-y-auto">
+    <img src="iPhone 17 - 3.png"
+        class="absolute inset-0 w-full h-full object-cover">
+
+
+    <div class="relative z-10 px-8">
+
+      <p class="font-inria tracking-widest text-base mb-5">
+        
+      </p>
+
+  <!-- CONTENT BAWAH -->
+  <div class="px-8 py-10 text-left">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <p class="font-inria tracking-widest text-sm text-[#800000] mb-4">
+      THE WEDDING OF
+    </p>
+
+    <h2 class="font-italiana text-4xl text-[#800000] mb-6">
+      Hendri & Intan
+    </h2>
+
+    <p class="font-inria text-sm tracking-wide text-[#800000] mb-8">
+      SABTU, 04 APRIL 2026
+    </p>
+
+    <button
+      class="px-6 py-2 rounded-full font-inria text-white text-sm
+             bg-gradient-to-b from-red-600 to-[#800000]
+             shadow-[0_4px_10px_rgba(128,0,0,0.5)]
+             active:scale-95 transition">
+      Simpan Tanggal
+    </button>
+    <br>
+    <br>
+
+  </div>
+<!-- SECTION COUNTDOWN -->
+<section id="countdown"
+class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
+
+    <img src="iPhone 17 - 4.png"
+         class="absolute inset-0 w-full h-full object-contain">
+
+
+    <div class="relative z-10 px-8">
+
+      <p class="font-inria tracking-widest text-base mb-5">
+        
+      </p>
+
+  <!-- Konten -->
+  <div class="relative px-8 pt-10 mt-8 text-center text-white">
+
+    <h2 class="font-italiana text-2xl mb-8">    
+      Hari Spesial Kami
+    </h2>
+
+    <div class="grid grid-cols-4 gap-6 max-w-md mx-auto">
+
+      <div>
+        <p id="days" class="count-item text-1xl font-semibold opacity-0 translate-y-6">
+          0
+        </p>
+        <p class="mt-2 text-lg font-inria">Hari</p>
+      </div>
+
+      <div>
+        <p id="hours" class="count-item text-1xl font-semibold opacity-0 translate-y-6">
+          0
+        </p>
+        <p class="mt-2 text-lg font-inria">Jam</p>
+      </div>
+
+      <div>
+        <p id="minutes" class="count-item text-1xl font-semibold opacity-0 translate-y-6">
+          0
+        </p>
+        <p class="mt-2 text-lg font-inria">Menit</p>
+      </div>
+
+      <div>
+        <p id="seconds" class="count-item text-1xl font-semibold opacity-0 translate-y-6">
+          0
+        </p>
+        <p class="mt-2 text-lg font-inria">Detik</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+</div>
+<section id="profil"
+
+class="w-full py-20 
+                bg-cover bg-center bg-repeat
+                text-center relative"
+        style="background-image: url('iPhone 17 - 6 (1).png');">
+
+
+  <div class="px-6 max-w-3xl mx-auto">
+
+    <!-- Teks Pembuka -->
+    <p class="text-red-800 text-lg leading-relaxed mb-12">
+      Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud 
+      mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami :
+    </p>
+
+    <!-- FOTO PRIA -->
+    <div class="flex justify-center mb-8">
+      <div class="rounded-[200px] border-8 border-red-800 overflow-hidden w-64 h-80">
+        <img src="IMG_4100.JPG.jpeg" 
+             class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <h3 class="font-italiana text-3xl text-red-900 mb-4">
+      Hendri Maulana
+    </h3>
+
+    <p class="text-red-800 leading-relaxed mb-8">
+      Putra pertama dari <br>
+      Bapak Umar Faruk (ayah kandung), H. Misbahul Munir (ayah sambung) <br>
+      & Ibu Rosida (ibu kandung), Wati Walista (ibu sambung)
+    </p>
+
+    <!-- Simbol & -->
+    <div class="text-4xl text-red-800 my-10">
+      &
+    </div>
+
+    <!-- FOTO WANITA -->
+    <div class="flex justify-center mb-8">
+      <div class="rounded-[200px] border-8 border-red-800 overflow-hidden w-64 h-80">
+        <img src="IMG_4098.JPEG" 
+             class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <h3 class="font-italiana text-3xl text-red-900 mb-4">
+      Intan Tika Kartika S.Ak
+    </h3>
+
+    <p class="text-red-800 leading-relaxed">
+      Putri kedua dari <br>
+      Bapak Ujang Karyadi dan Ibu Erni Suryani
+    </p>
+
+  </div>
+</section>
+<!-- SECTION COUNTDOWN -->
+<section id="surat"
+class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden">
+
+    <img src="iPhone 17 - 4.png"
+         class="absolute inset-0 w-full h-full object-contain">
+
+    <div class="relative z-10 px-8">
+
+      <!-- Konten -->
+      <div class="relative px-8 pt-10 mt-8 text-center text-white">
+
+        <!-- AYAT (dibuat sangat kecil & rata tengah) -->
+        <h2 class="font-italiana text-xs md:text-sm leading-relaxed max-w-2xl mx-auto mb-8">
+          <br>
+          “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+      <br>
+      pasangan-pasangan untukmu dari jenismu sendiri, agar kamu
+      <br>
+      cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di
+      <br>
+      antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu
+      <br>
+      benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang
+      <br>
+      berpikir”
+        </h2>
+
+        <!-- DIGANTI COUNTDOWN MENJADI SURAT -->
+        <div class="flex justify-center">
+          <p class="font-italiana tracking-widest text-lg md:text-xl">
+            (QS Ar Rum : 21)
+          </p>
+        </div>
+
+      </div>
+    </div>
+</section>
+<section id="profil"
+
+class="w-full py-10 
+                bg-cover bg-center
+                text-center relative"
+        style="background-image: url('iPhone 17 - 6 (1).png');">
+
+
+  <div class="px-6 max-w-3xl mx-auto">
+  </div>
+</section>
+<!-- SECTION ACARA -->
+<section id="acara"
+class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+
+  <!-- Background -->
+  <img src="IMG_4089_cpy.jpeg"
+       class="absolute inset-0 w-full h-full object-cover">
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- CARD WRAPPER -->
+<div id="flipCard"
+     class="relative z-10 
+            bg-white/90 backdrop-blur-md
+            w-[90%] max-w-md
+            px-8 py-14 text-center
+            shadow-2xl
+            border border-red-200
+            ring-1 ring-red-100
+            rounded-t-full rounded-b-3xl">
+
+    <!-- AKAD -->
+    <div class="from-top">
+      <h2 class="font-italiana text-3xl text-red-800 mb-4">
+        Akad Nikah
+      </h2>
+
+      <p class="text-sm tracking-widest">SABTU</p>
+      <p class="text-5xl text-red-800 font-semibold">04</p>
+      <p class="text-sm tracking-widest mb-2">APRIL 2025</p>
+      <p class="text-sm">08.00 WIB</p>
+
+      <p class="mt-4 text-xs">
+        Lokasi Gedung Samawa Cibeureum
+      </p>
+    </div>
+
+    <hr class="my-6">
+
+    <!-- RESEPSI -->
+    <div class="from-bottom">
+      <h2 class="font-italiana text-3xl text-red-800 mb-4">
+        Resepsi
+      </h2>
+
+      <p class="text-sm tracking-widest">SABTU</p>
+      <p class="text-5xl text-red-800 font-semibold">04</p>
+      <p class="text-sm tracking-widest mb-2">APRIL 2025</p>
+      <p class="text-sm">10.00 WIB</p>
+    </div>
+
+    <!-- BUTTON -->
+    <div class="mt-6 pop-in">
+      <a href="https://www.google.com/maps/search/Gedung+Samawa+Cibeureum"
+         target="_blank"
+         class="inline-block px-6 py-2 rounded-full font-inria text-white text-sm
+                bg-gradient-to-b from-red-600 to-[#800000]
+                shadow-[0_4px_10px_rgba(128,0,0,0.5)]
+                active:scale-95 transition">
+        Lihat Maps
+      </a>
+    </div>
+
+  </div>
+</section>
+<section class="galeri-section">
+  <h2 class="galeri-title">Galeri Foto</h2>
+
+  <div class="galeri-container">
+
+    <!-- 1 -->
+    <div class="galeri-item large">
+      <img src="IMG_4099.JPEG" alt="">
+    </div>
+
+    <!-- 2 -->
+    <div class="galeri-item large">
+      <img src="IMG_4096.JPG.jpeg" alt="">
+    </div>
+
+    <!-- 3 -->
+    <div class="galeri-item wide">
+      <img src="IMG_4092.JPG.jpeg" alt="">
+    </div>
+
+    <!-- 4 & 5 (2 kolom) -->
+    <div class="galeri-grid-2">
+      <div class="galeri-item">
+        <img src="IMG_4094.JPG.jpeg" alt="">
+      </div>
+      <div class="galeri-item">
+        <img src="IMG_4095.JPG.jpeg" alt="">
+      </div>
+    </div>
+
+    <!-- 6 & 7 (2 kolom) -->
+    <div class="galeri-grid-2">
+      <div class="galeri-item">
+        <img src="IMG_4091.JPG.jpeg" alt="">
+      </div>
+      <div class="galeri-item">
+        <img src="IMG_4089.JPG.jpeg" alt="">
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="galeri-item portrait">
+      <img src="IMG_4100.JPG.jpeg" alt="">
+    </div>
+
+    <!-- 9 -->
+    <div class="galeri-item large">
+      <img src="IMG_4098.JPEG" alt="">
+    </div>
+
+  </div>
+</section>
+<section class="gift-section" id="gift">
+  <div class="gift-box">
+    <h2>Wedding Gift</h2>
+    <p>
+      Bagi Bapak/Ibu/Saudara/i yang ingin mengirimkan hadiah pernikahan
+      dapat melalui virtual account di bawah ini:
+    </p>
+
+<button id="btnGift"
+  class="inline-block px-6 py-2 rounded-full font-inria text-white text-sm
+         bg-gradient-to-b from-red-600 to-[#800000]
+         shadow-[0_4px_10px_rgba(128,0,0,0.5)]
+         active:scale-95 transition duration-300">
+  🎁 <span class="text">Klik di sini</span>
+</button>
+
+    <!-- Hidden Content -->
+    <div class="gift-content" id="giftContent">
+
+      <!-- Rekening Card -->
+      <div class="rekening-card">
+        <div class="shimmer"></div>
+
+        <div class="bank-header">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" 
+               class="bank-logo" alt="BCA Logo">
+        </div>
+
+        <div class="rekening-info">
+          <h3 id="rekeningNumber">3211134672</h3>
+          <p>a/n Intan Tika Kartika</p>
+        </div>
+
+        <button class="copy-btn" onclick="copyRekening()">Copy</button>
+      </div>
+
+      <!-- Alamat -->
+      <div class="alamat-card">
+        <h4>🎁 Kirim Hadiah</h4>
+        <p>
+          Nama Penerima : Intan Tika Kartika <br>
+          Nomor HP : 085179691822 <br>
+          Alamat : Jl. Kebontiwu 1 blk no.12 RT3 RW5 Kelurahan Empangsari Kecamatan Tawang <br>
+          Kota Tasikmalaya
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="thankyou-section">
+  <div class="thankyou-content">
+    <h2>Terima Kasih</h2>
+    <p>
+      Merupakan suatu kebahagiaan dan kehormatan bagi kami,
+      apabila Bapak/Ibu/Saudara/i berkenan hadir dan
+      memberikan doa serta restu kepada kami.
+    </p>
+
+    <h3 class="couple-name">Hendri & Intan</h3>
+  </div>
+
+  <!-- FOTO -->
+  <div class="thankyou-image">
+    <img src="IMG_4094.JPG.jpeg" alt="Foto Pasangan">
+  </div>
+
+  <!-- FOOTER -->
+  <div class="thankyou-footer">
+    <p>Made with ❤️ by <span>septianahmd_</span></p>
+
+    <div class="social-icons">
+      <a href="https://instagram.com/septianahmd_" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10zm6.5-.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/>
+        </svg>
+      </a>
+
+      <a href="https://wa.me/6289515078666" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.03 2 11c0 1.89.59 3.65 1.6 5.14L2 22l6.01-1.57A10.89 10.89 0 0012 21c5.52 0 10-4.03 10-9S17.52 2 12 2zm0 16c-1.61 0-3.13-.42-4.44-1.15l-.32-.19-3.56.93.95-3.47-.21-.36A7.37 7.37 0 014.5 11c0-3.87 3.36-7 7.5-7s7.5 3.13 7.5 7-3.36 7-7.5 7z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+</div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const guest = params.get("to");
+
+  if (guest) {
+    document.getElementById("guestName").innerText = decodeURIComponent(guest);
+  }
+
+  const music = document.getElementById("bgMusic");
+  const toggleBtn = document.getElementById("musicToggle");
+
+  function openInvitation() {
+  const content = document.getElementById("content");
+
+  content.classList.remove("translate-y-full");
+  content.classList.add("translate-y-0");
+
+  if (music) {
+    music.play().catch(() => {});
+  }
+
+  toggleBtn.classList.remove("hidden");
+} 
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      toggleBtn.innerHTML = "🔊";
+    } else {
+      music.pause();
+      toggleBtn.innerHTML = "🔇";
+    }
+  }
+const targetDate = new Date("April 4, 2026 00:00:00").getTime();
+
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
+
+  const countdown = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      clearInterval(countdown);
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    daysEl.innerText = days;
+    hoursEl.innerText = hours;
+    minutesEl.innerText = minutes;
+    secondsEl.innerText = seconds;
+
+  }, 1000);
+
+
+  // ===== ANIMASI SAAT SCROLL =====
+  const countItems = document.querySelectorAll(".count-item");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.remove("opacity-0", "translate-y-6");
+            item.classList.add("opacity-100", "translate-y-0", "transition", "duration-700", "ease-out");
+          }, index * 150); // delay berurutan
+        });
+
+        observer.disconnect(); // hanya animasi sekali
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(document.querySelector(".grid"));
+</script>
+<script>
+const acaraObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+
+      // card flip
+      const card = entry.target.querySelector('#flipCard');
+      if (card) card.classList.add('show');
+
+      // animasi teks
+      entry.target.querySelectorAll('.from-top, .from-bottom, .pop-in')
+        .forEach((el, index) => {
+          setTimeout(() => {
+            el.classList.add('show');
+          }, index * 200);
+        });
+
+    }
+  });
+}, { threshold: 0.3 });
+
+acaraObserver.observe(document.querySelector('#acara'));
+</script>
+<script>
+const btnGift = document.getElementById("btnGift");
+const giftContent = document.getElementById("giftContent");
+const btnText = btnGift.querySelector(".text");
+
+btnGift.addEventListener("click", function() {
+  giftContent.classList.toggle("show");
+
+  if (giftContent.classList.contains("show")) {
+    btnText.innerText = "Tutup";
+    setTimeout(() => {
+      giftContent.scrollIntoView({ behavior: "smooth" });
+    }, 300);
+  } else {
+    btnText.innerText = "Klik di sini";
+  }
+});
+</script>
+</body>
+</html>
