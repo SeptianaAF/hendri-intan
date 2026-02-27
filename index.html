@@ -11,30 +11,19 @@
 
 <style>
   body {
-      margin: 0;
-  background: white;
-  overflow-x: hidden;
-}
-
-/* Default: full width */
-.phone-container {
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background: black;
-}
-
-/* Desktop only (simulasi HP) */
-@media (min-width: 768px) {
-  body {
+    margin: 0;
+    background: white;
     display: flex;
     justify-content: center;
   }
 
   .phone-container {
-    max-width: 430px;
+    width: 100%;
+    max-width: 430px; /* hanya batasi saat desktop */
     height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: black;
   }
 
   .font-inria {
