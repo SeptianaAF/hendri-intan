@@ -40,6 +40,182 @@ body{
   right:20px;
   z-index:999;
 }
+.gift-section {
+  background: #5c0000;
+  padding: 90px 20px;
+}
+
+.gift-box {
+  max-width: 600px;
+  margin: auto;
+  background: #ffffff;
+  padding: 50px 30px;
+  border-radius: 35px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.gift-box h2 {
+  font-size: 38px;
+  font-family: 'Playfair Display', serif;
+  color: 4a4a4a;
+  margin-bottom: 15px;
+}
+
+.gift-box p {
+  color: #4a4a4a;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* SLIDE PREMIUM */
+.gift-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s cubic-bezier(.77,0,.18,1);
+}
+
+.gift-content.show {
+  max-height: 1000px;
+  margin-top: 40px;
+}
+
+/* REKENING CARD */
+.rekening-card {
+  position: relative;
+  background: linear-gradient(135deg, #f5f5f5, #e9e9e9);
+  padding: 30px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  text-align: left;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* SHIMMER EFFECT */
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.1),
+    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.1)
+  );
+  transform: skewX(-25deg);
+  animation: shimmerMove 3s infinite;
+}
+
+@keyframes shimmerMove {
+  100% {
+    left: 150%;
+  }
+}
+
+/* LOGO */
+.bank-header {
+  margin-bottom: 20px;
+}
+
+.bank-logo {
+  height: 35px;
+}
+
+/* INFO */
+.rekening-info h3 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+.rekening-info p {
+  margin-top: 5px;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  background: #cfcfcf;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.copy-btn:hover {
+  background: #b5b5b5;
+}
+
+/* ALAMAT */
+.alamat-card {
+  background: #f5f5f5;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.alamat-card h4 {
+  margin-bottom: 15px;
+}
+/* FOTO */
+.thankyou-image img {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+/* FOOTER */
+.thankyou-footer {
+  background: #5c0000;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.thankyou-footer span {
+  font-weight: bold;
+}
+
+.social-icons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  background: #800000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #a00000;
+  transform: scale(1.1);
+}
+
+.social-icons svg {
+  width: 20px;
+  height: 20px;
+}
+.music-btn {
+  position: fixed;
+  bottom: 24px;
+  z-index: 999;
+}
 </style>
 </head>
 
@@ -69,28 +245,36 @@ class="absolute inset-0 w-full h-full object-cover">
 <div class="relative z-10 flex flex-col justify-around min-h-screen px-6 py-12">  
 <!-- ATAS -->
   <div>
-    <p class="tracking-widest text-sm md:text-lg mb-3">
+    <p class="tracking-widest text-lg md:text-lg mb-3">
       THE WEDDING OF
     </p>
 
-    <h1 class="font-italiana text-4xl md:text-6xl">
+    <h1 class="font-italiana text-5xl md:text-6xl">
       Hendri & Intan
     </h1>
   </div>
 
   <!-- BAWAH -->
   <div>
-    <p class="text-base mb-2">Dear,</p>
+    <p class="text-lg mb-2">Dear,</p>
 
     <p id="guestName"
-    class="text-xl md:text-2xl font-semibold mb-6">
+    class="text-2xl md:text-2xl font-semibold mb-6">
       Tamu Undangan
     </p>
 
     <button onclick="openInvitation()"
-    class="px-6 py-3 rounded-full text-sm md:text-base text-white
-    bg-gradient-to-b from-red-600 to-[#800000]
-    shadow-lg active:scale-95 transition">
+class="inline-block
+       px-6 py-3
+       rounded-full
+       font-inria
+       text-base
+       text-white
+       bg-gradient-to-b from-red-600 to-[#5c0000]
+       shadow-[0_4px_10px_rgba(128,0,0,0.5)]
+       hover:shadow-[0_6px_18px_rgba(128,0,0,0.6)]
+       active:scale-95
+       transition duration-300">
       Buka Undangan
     </button>
   </div>
@@ -118,15 +302,15 @@ overflow-y-auto">
   <!-- Text -->
   <div class="text-red-900 relative z-10 px-10 mb-24">
 
-    <p class="tracking-widest text-sm md:text-lg mb-3">
+    <p class="tracking-widest text-lg md:text-lg mb-3">
       THE WEDDING OF
     </p>
 
-    <h2 class="font-italiana text-3xl md:text-5xl my-4">
+    <h2 class="font-italiana text-4xl md:text-5xl my-4">
       Hendri & Intan
     </h2>
 
-    <p class="text-sm md:text-base">
+    <p class="text-lg md:text-base">
       Sabtu, 04 April 2026
     </p>
 
@@ -136,7 +320,14 @@ overflow-y-auto">
 
 <!-- COUNTDOWN -->
 <section id="countdownSection"
-class="py-16 bg-red-800 text-white text-center overflow-hidden">
+class="relative py-20 text-white text-center overflow-hidden">
+
+<!-- Background Image -->
+<img src="iPhone 17 - 4.png"
+class="absolute inset-0 w-full h-full object-cover">
+
+<!-- Content -->
+<div class="relative z-10">
 
 <h2 class="font-italiana text-2xl md:text-4xl mb-10 opacity-0 translate-y-10 transition-all duration-1000">
 Hari Spesial Kami
@@ -165,38 +356,53 @@ Hari Spesial Kami
 </div>
 
 </div>
+
+</div>
 </section>
 
 <!-- PROFIL -->
-<section class="py-16 text-center px-6">
+<section class="relative py-20 text-center px-6 text-white overflow-hidden">
 
-<p class="text-sm md:text-base text-red-800 mb-10">
+<!-- Background Image -->
+<img src="iPhone 17 - 6 (1).png"
+class="absolute inset-0 w-full h-full object-cover">
+
+<!-- Content -->
+<div class="relative z-10 max-w-md mx-auto">
+
+<p class="text-sm md:text-base mb-10 text-gray-500 leading-relaxed text-gray-100">
 Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud 
-      mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami :</p>
+mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami :
+</p>
 
 <img src="IMG_4100.JPG.jpeg"
 class="w-40 h-52 mx-auto rounded-full object-cover border-4 border-red-800 mb-6">
 
-<h3 class="font-italiana text-2xl md:text-4xl text-red-900 mb-4">
+<h3 class="font-italiana text-3xl md:text-4xl mb-4 text-red-800">
 Hendri Maulana
 </h3>
 
-<p class="text-sm text-red-800 mb-10">
+<p class="text-sm mb-10 text-gray-500 leading-relaxed text-gray">
 Bapak Umar Faruk (ayah kandung), H. Misbahul Munir (ayah sambung)
-      & Ibu Rosida (ibu kandung), Wati Walista (ibu sambung)</p>
-
+& Ibu Rosida (ibu kandung), Wati Walista (ibu sambung)
+</p>
+    <!-- Simbol & -->
+    <p class="font-italiana text-6xl text-red-800 my-10">
+      &
+    </p>
 <img src="IMG_4098.JPEG"
 class="w-40 h-52 mx-auto rounded-full object-cover border-4 border-red-800 mb-6">
 
-<h3 class="font-italiana text-2xl md:text-4xl text-red-900 mb-4">
+<h3 class="font-italiana text-3xl md:text-4xl mb-4 text-red-800">
 Intan Tika Kartika S.Ak
 </h3>
 
-<p class="text-sm text-red-800">
+<p class="text-sm text-gray-500 leading-relaxed text-gray-100">
 Putri kedua dari <br>
-      Bapak Ujang Karyadi dan Ibu Erni Suryani
-    </p>
+Bapak Ujang Karyadi dan Ibu Erni Suryani
+</p>
 
+</div>
 </section>
 
 <!-- ACARA -->
@@ -210,7 +416,7 @@ class="absolute inset-0 w-full h-full object-cover">
 
 <div id="flipCard"
 class="relative z-10 bg-white/95 text-black
-w-[85%] max-w-xs
+w-[75%] max-w-[280px]
 mx-auto
 px-6 pt-16 pb-10
 shadow-2xl
@@ -224,8 +430,12 @@ rounded-b-3xl
       Akad Nikah
     </h2>
 
-    <p>Sabtu, 04 April 2026</p>
-    <p>08.00 WIB</p>
+<p class="text-base">Sabtu, 04 April 2026</p>
+<p class="text-base">08.00 WIB</p>
+
+<p class="text-sm text-gray-500 mt-2">
+  Lokasi Gedung Samawa Cibeureum
+</p>
 
     <hr class="my-6 border-red-200">
 
@@ -239,7 +449,8 @@ rounded-b-3xl
     <a href="https://www.google.com/maps/search/Gedung+Samawa+Cibeureum"
     target="_blank"
     class="inline-block mt-6 px-6 py-2 rounded-full text-white
-    bg-gradient-to-b from-red-600 to-[#800000] text-sm shadow-md">
+    bg-gradient-to-b from-red-600 to-[#800000] text-sm shadow-md
+    hover:shadow-[0_6px_18px_rgba(128,0,0,0.6)]">
       Lihat Maps
     </a>
 
@@ -274,39 +485,216 @@ berpikir”
 <!-- GALERI -->
 <section class="py-16 bg-gray-100">
 
-<h2 class="font-italiana text-center text-3xl mb-10">
-Galeri Foto
-</h2>
+  <h2 class="font-italiana text-center text-3xl mb-10">
+    Galeri Foto
+  </h2>
 
-<div class="grid grid-cols-2 gap-3 px-4">
+  <div class="grid grid-cols-2 gap-3 px-4">
 
-<img src="IMG_4099.JPEG" class="rounded-xl object-cover">
-<img src="IMG_4096.JPG.jpeg" class="rounded-xl object-cover">
-<img src="IMG_4092.JPG.jpeg" class="rounded-xl object-cover">
-<img src="IMG_4094.JPG.jpeg" class="rounded-xl object-cover">
+    <!-- 1 -->
+    <div class="group col-span-2 relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4099.JPEG"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
 
-</div>
+    <!-- 2 -->
+    <div class="group relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4096.JPG.jpeg"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="group relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4092.JPG.jpeg"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
+
+    <!-- 4 -->
+    <div class="group relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4094.JPG.jpeg"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
+
+    <!-- 5 -->
+    <div class="group relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4095.JPG.jpeg"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
+
+    <!-- 6 -->
+    <div class="group relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4091.JPG.jpeg"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
+
+    <!-- 7 -->
+    <div class="group relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4089.JPG.jpeg"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
+
+    <!-- 8 -->
+    <div class="group col-span-2 relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4100.JPG.jpeg"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
+
+    <!-- 9 -->
+    <div class="group col-span-2 relative overflow-hidden rounded-xl
+                cursor-pointer transition-all duration-500
+                hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+      <img src="IMG_4098.JPEG"
+           onclick="openLightbox(this.src)"
+           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition duration-500"></div>
+    </div>
+
+  </div>
 </section>
+<!-- LIGHTBOX PREMIUM -->
+<div id="lightbox"
+     class="fixed inset-0 z-[999] hidden
+            bg-black/90 backdrop-blur-md
+            items-center justify-center
+            p-6 transition-opacity duration-500">
 
+  <!-- Tombol Close -->
+  <button onclick="closeLightbox()"
+          class="absolute top-6 right-6 text-white text-3xl">
+    ✕
+  </button>
+
+  <!-- Gambar -->
+  <img id="lightboxImg"
+       class="max-h-[90vh] max-w-full
+              rounded-2xl shadow-2xl
+              scale-90 opacity-0
+              transition-all duration-500">
+</div>
+<section class="gift-section" id="gift">
+  <div class="gift-box">
+    <h2>Wedding Gift</h2>
+    <p>
+      Bagi Bapak/Ibu/Saudara/i yang ingin mengirimkan hadiah pernikahan
+      dapat melalui virtual account di bawah ini:
+    </p>
+
+<button id="btnGift"
+  class="inline-block px-6 py-2 rounded-full font-inria text-white text-sm
+         bg-gradient-to-b from-red-600 to-[#800000]
+         shadow-[0_4px_10px_rgba(128,0,0,0.5)]
+         active:scale-95 transition duration-300
+         hover:shadow-[0_6px_18px_rgba(128,0,0,0.6)]">
+  🎁 <span class="text">Klik di sini</span>
+</button>
+
+    <!-- Hidden Content -->
+    <div class="gift-content" id="giftContent">
+
+      <!-- Rekening Card -->
+      <div class="rekening-card">
+        <div class="shimmer"></div>
+
+        <div class="bank-header">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" 
+               class="bank-logo" alt="BCA Logo">
+        </div>
+
+        <div class="rekening-info">
+          <h3 id="rekeningNumber">3211134672</h3>
+          <p>a/n Intan Tika Kartika</p>
+        </div>
+
+        <button class="copy-btn" onclick="copyRekening()">Copy</button>
+      </div>
+
+      <!-- Alamat -->
+      <div class="alamat-card">
+        <h4>🎁 Kirim Hadiah</h4>
+        <p>
+          Nama Penerima : Intan Tika Kartika <br>
+          Nomor HP : 085179691822 <br>
+          Alamat : Jl. Kebontiwu 1 blk no.12 RT3 RW5 Kelurahan Empangsari Kecamatan Tawang <br>
+          Kota Tasikmalaya
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
 <!-- THANK YOU -->
-<section class="py-16 text-center bg-red-800 text-white">
-
+<section class="py-16 px-8 text-left bg-[#5c0000] text-white">
 <h2 class="font-italiana text-3xl mb-6">
 Terima Kasih
 </h2>
 
-<p class="text-sm max-w-md mx-auto">
-Merupakan suatu kebahagiaan...
-</p>
+<p class="text-sm">
+Merupakan suatu kebahagiaan dan kehormatan bagi kami,
+      apabila Bapak/Ibu/Saudara/i berkenan hadir dan
+      memberikan doa serta restu kepada kami.</p>
 
 <h3 class="font-italiana text-2xl mt-8">
 Hendri & Intan
 </h3>
-
 </section>
-
+<section>
+  <!-- FOTO -->
+  <div class="thankyou-image">
+    <img src="IMG_4094.JPG.jpeg" alt="Foto Pasangan">
+  </div>
 </section>
+<section>
+  <!-- FOOTER -->
+  <div class="thankyou-footer">
+    <p>Made with ❤️ by <span>septianahmd_</span></p>
 
+    <div class="social-icons">
+      <a href="https://instagram.com/septianahmd_" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm5 5a5 5 0 110 10 5 5 0 010-10zm6.5-.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/>
+        </svg>
+      </a>
+
+      <a href="https://wa.me/6289515078666" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.03 2 11c0 1.89.59 3.65 1.6 5.14L2 22l6.01-1.57A10.89 10.89 0 0012 21c5.52 0 10-4.03 10-9S17.52 2 12 2zm0 16c-1.61 0-3.13-.42-4.44-1.15l-.32-.19-3.56.93.95-3.47-.21-.36A7.37 7.37 0 014.5 11c0-3.87 3.36-7 7.5-7s7.5 3.13 7.5 7-3.36 7-7.5 7z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
 <script>
 const params = new URLSearchParams(window.location.search);
 const guest = params.get("to");
@@ -412,6 +800,7 @@ const btnText = btnGift.querySelector(".text");
 
 btnGift.addEventListener("click", function() {
   giftContent.classList.toggle("show");
+  btnGift.classList.toggle("active");
 
   if (giftContent.classList.contains("show")) {
     btnText.innerText = "Tutup";
@@ -422,7 +811,47 @@ btnGift.addEventListener("click", function() {
     btnText.innerText = "Klik di sini";
   }
 });
-</script>
 
+function copyRekening() {
+  const nomor = document.getElementById("rekeningNumber").innerText;
+  navigator.clipboard.writeText(nomor);
+  alert("Nomor rekening berhasil disalin!");
+}
+</script>
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+function openLightbox(src) {
+  lightbox.classList.remove("hidden");
+  lightbox.classList.add("flex");
+  lightboxImg.src = src;
+
+  document.body.style.overflow = "hidden";
+
+  setTimeout(() => {
+    lightboxImg.classList.remove("scale-90", "opacity-0");
+    lightboxImg.classList.add("scale-100", "opacity-100");
+  }, 50);
+}
+
+function closeLightbox() {
+  lightboxImg.classList.remove("scale-100", "opacity-100");
+  lightboxImg.classList.add("scale-90", "opacity-0");
+
+  setTimeout(() => {
+    lightbox.classList.add("hidden");
+    lightbox.classList.remove("flex");
+    document.body.style.overflow = "auto";
+  }, 300);
+}
+
+// Klik luar gambar untuk tutup
+lightbox.addEventListener("click", function(e) {
+  if (e.target === lightbox) {
+    closeLightbox();
+  }
+});
+</script>
 </body>
 </html>
