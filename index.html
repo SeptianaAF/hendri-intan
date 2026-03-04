@@ -67,28 +67,28 @@ class="absolute inset-0 w-full h-full object-cover">
 <div class="absolute inset-0 bg-black/60"></div>
 
 <div class="relative z-10 flex flex-col justify-around min-h-screen px-6 py-12">  
-  <!-- ATAS -->
+<!-- ATAS -->
   <div>
-    <p class="tracking-widest text-2xl md:text-lg mb-3">
+    <p class="tracking-widest text-sm md:text-lg mb-3">
       THE WEDDING OF
     </p>
 
-    <h1 class="font-italiana text-8xl md:text-6xl">
+    <h1 class="font-italiana text-4xl md:text-6xl">
       Hendri & Intan
     </h1>
   </div>
 
   <!-- BAWAH -->
   <div>
-    <p class="text-2xl mb-2">Dear,</p>
+    <p class="text-base mb-2">Dear,</p>
 
     <p id="guestName"
-    class="text-xl md:text-5xl font-semibold mb-6">
+    class="text-xl md:text-2xl font-semibold mb-6">
       Tamu Undangan
     </p>
 
     <button onclick="openInvitation()"
-    class="px-6 py-3 rounded-full text-2xl md:text-base text-white
+    class="px-6 py-3 rounded-full text-sm md:text-base text-white
     bg-gradient-to-b from-red-600 to-[#800000]
     shadow-lg active:scale-95 transition">
       Buka Undangan
@@ -116,7 +116,7 @@ overflow-y-auto">
   <!-- Overlay -->
 
   <!-- Text -->
-  <div class="text-red-900 relative z-10 px-6 mb-6">
+  <div class="text-red-900 relative z-10 px-10 mb-24">
 
     <p class="tracking-widest text-sm md:text-lg mb-3">
       THE WEDDING OF
@@ -135,32 +135,33 @@ overflow-y-auto">
 </section>
 
 <!-- COUNTDOWN -->
-<section class="py-12 bg-red-800 text-white text-center">
+<section id="countdownSection"
+class="py-16 bg-red-800 text-white text-center overflow-hidden">
 
-<h2 class="font-italiana text-2xl md:text-4xl mb-6">
+<h2 class="font-italiana text-2xl md:text-4xl mb-10 opacity-0 translate-y-10 transition-all duration-1000">
 Hari Spesial Kami
 </h2>
 
-<div class="grid grid-cols-4 gap-4 max-w-md mx-auto">
+<div class="grid grid-cols-4 gap-6 max-w-md mx-auto">
 
-<div>
-<p id="days" class="text-2xl md:text-3xl font-bold">0</p>
-<p class="text-xs">Hari</p>
+<div class="count-item opacity-0 translate-y-12 transition-all duration-1000">
+<p id="days" class="text-3xl md:text-4xl font-bold">0</p>
+<p class="text-xs mt-1">Hari</p>
 </div>
 
-<div>
-<p id="hours" class="text-2xl md:text-3xl font-bold">0</p>
-<p class="text-xs">Jam</p>
+<div class="count-item opacity-0 translate-y-12 transition-all duration-1000 delay-100">
+<p id="hours" class="text-3xl md:text-4xl font-bold">0</p>
+<p class="text-xs mt-1">Jam</p>
 </div>
 
-<div>
-<p id="minutes" class="text-2xl md:text-3xl font-bold">0</p>
-<p class="text-xs">Menit</p>
+<div class="count-item opacity-0 translate-y-12 transition-all duration-1000 delay-200">
+<p id="minutes" class="text-3xl md:text-4xl font-bold">0</p>
+<p class="text-xs mt-1">Menit</p>
 </div>
 
-<div>
-<p id="seconds" class="text-2xl md:text-3xl font-bold">0</p>
-<p class="text-xs">Detik</p>
+<div class="count-item opacity-0 translate-y-12 transition-all duration-1000 delay-300">
+<p id="seconds" class="text-3xl md:text-4xl font-bold">0</p>
+<p class="text-xs mt-1">Detik</p>
 </div>
 
 </div>
@@ -200,7 +201,7 @@ Putri kedua dari <br>
 
 <!-- ACARA -->
 <section id="acara"
-class="relative py-20 text-center text-white">
+class="relative py-20 text-center text-white overflow-hidden">
 
 <img src="IMG_4089_cpy.jpeg"
 class="absolute inset-0 w-full h-full object-cover">
@@ -208,31 +209,41 @@ class="absolute inset-0 w-full h-full object-cover">
 <div class="absolute inset-0 bg-black/60"></div>
 
 <div id="flipCard"
-class="relative z-10 bg-white/90 text-black
-max-w-md mx-auto p-8 rounded-3xl shadow-xl">
+class="relative z-10 bg-white/95 text-black
+w-[85%] max-w-xs
+mx-auto
+px-6 pt-16 pb-10
+shadow-2xl
+rounded-b-3xl
+[border-top-left-radius:220px]
+[border-top-right-radius:220px]">
 
-<h2 class="font-italiana text-2xl md:text-3xl text-red-800 mb-4">
-Akad Nikah
-</h2>
+  <div class="text-center">
 
-<p>Sabtu, 04 April 2026</p>
-<p>08.00 WIB</p>
+    <h2 class="font-italiana text-2xl md:text-3xl text-red-800 mb-4">
+      Akad Nikah
+    </h2>
 
-<hr class="my-6">
+    <p>Sabtu, 04 April 2026</p>
+    <p>08.00 WIB</p>
 
-<h2 class="font-italiana text-2xl md:text-3xl text-red-800 mb-4">
-Resepsi
-</h2>
+    <hr class="my-6 border-red-200">
 
-<p>Sabtu, 04 April 2026</p>
-<p>10.00 WIB</p>
+    <h2 class="font-italiana text-2xl md:text-3xl text-red-800 mb-4">
+      Resepsi
+    </h2>
 
-<a href="https://www.google.com/maps/search/Gedung+Samawa+Cibeureum"
-target="_blank"
-class="inline-block mt-6 px-6 py-2 rounded-full text-white
-bg-gradient-to-b from-red-600 to-[#800000] text-sm">
-Lihat Maps
-</a>
+    <p>Sabtu, 04 April 2026</p>
+    <p>10.00 WIB</p>
+
+    <a href="https://www.google.com/maps/search/Gedung+Samawa+Cibeureum"
+    target="_blank"
+    class="inline-block mt-6 px-6 py-2 rounded-full text-white
+    bg-gradient-to-b from-red-600 to-[#800000] text-sm shadow-md">
+      Lihat Maps
+    </a>
+
+  </div>
 
 </div>
 </section>
@@ -333,39 +344,43 @@ function toggleMusic(){
   }
 }
 
-/* COUNTDOWN */
-const targetDate=new Date("April 4, 2026 00:00:00").getTime();
-setInterval(()=>{
-const now=new Date().getTime();
-const distance=targetDate-now;
-if(distance<0)return;
+// ===== TANGGAL PERNIKAHAN =====
+const weddingDate = new Date("April 4, 2026 08:00:00").getTime();
 
-document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
-document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
-document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
-},1000);
-</script>
-<script>
-  // ===== ANIMASI SAAT SCROLL =====
-  const countItems = document.querySelectorAll(".count-item");
+// ===== UPDATE COUNTDOWN =====
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        countItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.classList.remove("opacity-0", "translate-y-6");
-            item.classList.add("opacity-100", "translate-y-0", "transition", "duration-700", "ease-out");
-          }, index * 150); // delay berurutan
-        });
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
 
-        observer.disconnect(); // hanya animasi sekali
-      }
-    });
-  }, { threshold: 0.4 });
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
+}, 1000);
 
-  observer.observe(document.querySelector(".grid"));
+
+// ===== ANIMASI SAAT SCROLL =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const items = entry.target.querySelectorAll(".count-item, h2");
+
+      items.forEach(el => {
+        el.classList.remove("opacity-0", "translate-y-12", "translate-y-10");
+        el.classList.add("opacity-100", "translate-y-0");
+      });
+
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+observer.observe(document.getElementById("countdownSection"));
 </script>
 <script>
 const acaraObserver = new IntersectionObserver(entries => {
@@ -408,5 +423,6 @@ btnGift.addEventListener("click", function() {
   }
 });
 </script>
+
 </body>
 </html>
