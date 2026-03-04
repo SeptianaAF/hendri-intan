@@ -285,9 +285,10 @@ class="inline-block
 
 <!-- ================= CONTENT ================= -->
 <section id="content"
-class="fixed inset-0 bg-white
-translate-y-full
-transition-transform duration-1000 ease-in-out
+class="absolute inset-0 z-10
+transform translate-y-full opacity-0
+transition-all duration-1000
+ease-[cubic-bezier(.22,1,.36,1)]
 overflow-y-auto">
 
 <!-- HERO INFO DENGAN BACKGROUND -->
@@ -702,35 +703,32 @@ if (guest) {
   document.getElementById("guestName").innerText = decodeURIComponent(guest);
 }
 
+const music = document.getElementById("bgMusic");
+const toggleBtn = document.getElementById("musicToggle");
+
 function openInvitation() {
   const cover = document.getElementById("cover");
   const content = document.getElementById("content");
+  const music = document.getElementById("bgMusic");
+  const btn = document.getElementById("musicToggle");
 
-  // Slide content naik
+  // Slide naik
   content.classList.remove("translate-y-full");
   content.classList.add("translate-y-0");
 
-  // Hilangkan cover dengan fade
-  cover.classList.add("opacity-0");
-  cover.classList.add("transition-opacity");
-  cover.classList.add("duration-700");
+  // Fade cover
+  cover.classList.add("opacity-0", "transition-opacity", "duration-700");
 
   setTimeout(() => {
     cover.style.display = "none";
   }, 700);
+
+  // Play music
+  music.play().then(() => {
+    btn.classList.remove("hidden");
+  }).catch(() => {});
 }
 
-function toggleMusic(){
-  const music=document.getElementById("bgMusic");
-  const btn=document.getElementById("musicToggle");
-  if(music.paused){
-    music.play();
-    btn.innerHTML="🔊";
-  }else{
-    music.pause();
-    btn.innerHTML="🔇";
-  }
-}
 
 // ===== TANGGAL PERNIKAHAN =====
 const weddingDate = new Date("April 4, 2026 08:00:00").getTime();
@@ -851,6 +849,16 @@ lightbox.addEventListener("click", function(e) {
   if (e.target === lightbox) {
     closeLightbox();
   }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const content = document.getElementById("content");
+
+  // Biar tidak glitch saat first render
+  setTimeout(() => {
+    content.classList.remove("opacity-0");
+  }, 50);
 });
 </script>
 </body>
