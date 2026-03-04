@@ -722,13 +722,23 @@ function openInvitation() {
   setTimeout(() => {
     cover.style.display = "none";
   }, 700);
-
   // Play music
-  music.play().then(() => {
-    btn.classList.remove("hidden");
-  }).catch(() => {});
+  music.play().then(()=>{
+    toggleBtn.classList.remove("hidden");
+    toggleBtn.innerHTML = "🔊";
+  }).catch(()=>{});
 }
 
+function toggleMusic(){
+
+  if(music.paused){
+    music.play();
+    toggleBtn.innerHTML = "🔊";
+  }else{
+    music.pause();
+    toggleBtn.innerHTML = "🔇";
+  }
+}
 
 // ===== TANGGAL PERNIKAHAN =====
 const weddingDate = new Date("April 4, 2026 08:00:00").getTime();
